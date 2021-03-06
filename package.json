@@ -1,14 +1,15 @@
 {
-    "name": "djhttp",
+    "name": "dc-http",
     "version": "1.0.0",
     "description": "网路请求工具",
-    "main": "index.js",
-    "scripts": {
-        "build": ""
-    },
+    "main": "lib/index.js",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Ken-ding/http.git"
+    },
+    "scripts": {
+        "build": "babel index.js --copy-files -d lib --verbose",
+        "prepublish": "npm run build"
     },
     "keywords": [],
     "author": "",
@@ -19,5 +20,10 @@
     "homepage": "https://github.com/Ken-ding/http#readme",
     "dependencies": {
         "axios": "^0.21.1"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.13.0",
+        "@babel/core": "^7.13.8",
+        "@babel/preset-env": "^7.13.9"
     }
 }
