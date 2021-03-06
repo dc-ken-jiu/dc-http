@@ -2,7 +2,7 @@
  * @Description:
  * @Author: dingxuejin
  * @Date: 2021-02-01 10:17:19
- * @LastEditTime: 2021-03-06 16:24:36
+ * @LastEditTime: 2021-03-06 16:49:24
  * @LastEditors: dingxuejin
  */
 const axios = require("axios")
@@ -135,6 +135,12 @@ class DCHttp {
     baseDelete = (url, value, config = {}) => {
         return this.baseRequest("delete", url, value, config);
     };
+    /**
+     * 获取原生axios
+     */
+    getAxios() {
+        return axios;
+    }
 }
 
 module.exports = DCHttp;
