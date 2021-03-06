@@ -2,7 +2,7 @@
  * @Description:
  * @Author: dingxuejin
  * @Date: 2021-02-01 10:17:19
- * @LastEditTime: 2021-03-06 15:37:59
+ * @LastEditTime: 2021-03-06 16:24:36
  * @LastEditors: dingxuejin
  */
 const axios = require("axios")
@@ -117,7 +117,7 @@ class DCHttp {
      * @param {*} value
      * 使用post
      */
-    basePost(url, value, config = {}) {
+    basePost = (url, value, config = {}) => {
         return this.baseRequest("post", url, value, config)
     };
     /**
@@ -125,14 +125,14 @@ class DCHttp {
      * @param {*} value
      * 使用put
      */
-    basePut(url, value, config = {}) {
+    basePut = (url, value, config = {}) => {
         return this.baseRequest("put", url, value, config);
     };
     /**
      * @param {*} url
      * 使用delete
      */
-    baseDelete(url, value, config = {}) {
+    baseDelete = (url, value, config = {}) => {
         return this.baseRequest("delete", url, value, config);
     };
 }
