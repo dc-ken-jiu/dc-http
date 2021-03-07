@@ -2,7 +2,7 @@
 
 主要基于axios(0.21.1)二次封装,拓展部分其功能
 
-(axios文档)[https://www.yuque.com/docs/share/3428fd69-afce-46ca-bab2-510aee42ece1?# 《axios文档》]
+[axios文档](https://www.yuque.com/docs/share/3428fd69-afce-46ca-bab2-510aee42ece1)
 
 ## 特性
 - 集成拦截器配置
@@ -19,9 +19,7 @@ npm install dc-http
 ## 使用案例
 
 ```bash
-
 import axios from "dc-http";
-import config from "./config"
 
 const http = new axios({
     baseURL: '/api',
@@ -236,20 +234,55 @@ http.baseGet('/user?ID=12345')
 
 - 集成拦截器
 - 增加响应数据处理策略
-### API
+## API
 
-#### getAxios
+### getAxios
 
 获取原有的axios
 
-##### baseGet
+```js
+import axios from "dc-http";
+const http = new axios(config)
+http.getAxios()
+```
+
+### baseGet
+
 Get请求封装
 
-##### basePost
+```js
+import axios from "dc-http";
+const http = new axios(config)
+http.baseGet(url[, config])
+```
+
+### basePost
+
 Post请求封装
 
-##### basePut
+```js
+import axios from "dc-http";
+const http = new axios(config)
+http.basePost(url[, data[, config]])
+```
+
+
+### basePut
+
 Put请求封装
 
-##### baseDelete
+```js
+import axios from "dc-http";
+const http = new axios(config)
+http.basePut(url[, data[, config]])
+```
+
+### baseDelete
+
 Delete请求的封装
+
+```js
+import axios from "dc-http";
+const http = new axios(config)
+http.baseDelete(url[, config])
+```
