@@ -1,6 +1,6 @@
 {
     "name": "dc-http",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "description": "网路请求工具",
     "main": "lib/index.js",
     "repository": {
