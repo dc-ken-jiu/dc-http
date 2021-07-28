@@ -2,10 +2,11 @@
  * @Description:
  * @Author: dingxuejin
  * @Date: 2021-02-01 10:17:19
- * @LastEditTime: 2021-03-06 16:49:24
- * @LastEditors: dingxuejin
+ * @LastEditTime: 2021-07-28 18:39:59
+ * @LastEditors: Please set LastEditors
  */
-const axios = require("axios")
+import axios from 'axios';
+import qs from 'qs';
 
 class DCHttp {
     constructor(config) {
@@ -109,7 +110,8 @@ class DCHttp {
      * @param {*} url
      * 使用get
      */
-    baseGet = (url, config = {}) => {
+    baseGet = (url, value = "", config = {}) => {
+        config.params = value;
         return this.baseRequest("get", url, config);
     };
     /**
@@ -134,6 +136,15 @@ class DCHttp {
      */
     baseDelete = (url, value, config = {}) => {
         return this.baseRequest("delete", url, value, config);
+    };
+    /**
+     * @param {*} url
+     * 使用delete
+     */
+    baseXWwwFormPost = (url, value, config = {}) => {
+        config.headers["content-type"] = "application/x-www-form-urlencoded";
+        config.data = qs.stringify(value);
+        return this.baseRequest("post", url, value, config);
     };
     /**
      * 获取原生axios

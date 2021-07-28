@@ -232,8 +232,9 @@ http.baseGet('/user?ID=12345')
 }
 ```
 
-- 集成拦截器
-- 增加响应数据处理策略
+- 整体配置集成拦截器
+- 增加响应数据处理策略(避免使用原生的transformResponse或者其他axios的api造成影响)
+- 封装常用的请求类型
 ## API
 
 ### getAxios
@@ -253,7 +254,7 @@ Get请求封装
 ```js
 import axios from "dc-http";
 const http = new axios(config)
-http.baseGet(url[, config])
+http.baseGet(url[, data[, config]])
 ```
 
 ### basePost
@@ -284,5 +285,18 @@ Delete请求的封装
 ```js
 import axios from "dc-http";
 const http = new axios(config)
-http.baseDelete(url[, config])
+http.baseDelete(url[, data[, config]])
 ```
+
+
+### baseXWwwFormPost
+
+WwwFormPost请求的封装
+
+```js
+import axios from "dc-http";
+const http = new axios(config)
+http.baseXWwwFormPost(url[, data[, config]])
+```
+
+
