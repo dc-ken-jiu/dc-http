@@ -2,8 +2,8 @@
  * @Description:
  * @Author: dingxuejin
  * @Date: 2021-02-01 10:17:19
- * @LastEditTime: 2021-03-06 16:49:24
- * @LastEditors: dingxuejin
+ * @LastEditTime: 2021-07-28 11:42:22
+ * @LastEditors: Please set LastEditors
  */
 const axios = require("axios")
 
@@ -13,8 +13,6 @@ class DCHttp {
         this.interceptorsRequest = "";
         //响应拦截器
         this.interceptorsResponse = "";
-        //响应策略
-        this.strategy = "";
         //初始化
         this.init(config);
     }
@@ -22,23 +20,10 @@ class DCHttp {
      * 初始化,处理config参数,创建axios实例
      */
     init(config) {
-        this.handStrategy(config);
         this.config = this.handleConfig(config);
         this.axios = this.addInterceptors();
     }
-    /**
-     * 
-     * 处理策略值
-     */
-    handStrategy(config) {
-        if (typeof config.strategy == "function") {
-            this.strategy = config.strategy;
-        } else {
-            this.strategy = async function (p) {
-                return p
-            }
-        }
-    }
+
     /**
      * 处理config参数
      */
@@ -93,17 +78,9 @@ class DCHttp {
         return instance;
     }
     baseRequest(type, url, value = "", config = {}) {
-        let { noEffect } = config;
-        if (noEffect) delete config.noEffect;
         config = Object.assign({ url, method: type, data: value }, config)
         let p = this.axios.request(config);
-
-        //策略是否启用
-        if (!noEffect) {
-            return this.strategy(p);
-        } else {
-            return p;
-        }
+        return p;
     }
     /**
      * @param {*} url
